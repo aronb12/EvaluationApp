@@ -2,6 +2,9 @@ var app = angular.module("EvaluationApp", ["ngRoute"]);
 
 app.config(function($routeProvider) {
 	$routeProvider.when("/", {
+		templateUrl: "templates/login.html",
+		controller: "LoginController"
+	}).when("/home", {
 		templateUrl: "templates/home.html",
 		controller: "HomeController"
 	}).when("/evaluation/:evaluationID", {
@@ -9,9 +12,6 @@ app.config(function($routeProvider) {
 		controller: "EvaluationController"
 	}).when("/evaluation/", {
 		templateUrl: "templates/evaluation.html",
-		controller: "EvaluationController"
-	}).when("/login/", {
-		templateUrl: "templates/login.html",
 		controller: "EvaluationController"
 	}).otherwise({ redirectTo: "/"});
 });
