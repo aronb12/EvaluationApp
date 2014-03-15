@@ -8,6 +8,7 @@ app.factory("LoginFactory", [
 
 				$http.post("http://dispatch.ru.is/h22/api/v1/login", { user: name, pass: password })
 				.success(function(data, status, headers) {
+					console.log(data);
 					username = name;
 					token = data.token;
 					role = data.role;

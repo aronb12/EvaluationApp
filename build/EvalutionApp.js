@@ -2,6 +2,9 @@ var app = angular.module("EvaluationApp", ["ngRoute"]);
 
 app.config(function($routeProvider) {
 	$routeProvider.when("/", {
+		templateUrl: "templates/login.html",
+		controller: "LoginController"
+	}).when("/home", {
 		templateUrl: "templates/home.html",
 		controller: "HomeController"
 	}).when("/evaluation/:evaluationID", {
@@ -9,9 +12,6 @@ app.config(function($routeProvider) {
 		controller: "EvaluationController"
 	}).when("/evaluation/", {
 		templateUrl: "templates/evaluation.html",
-		controller: "EvaluationController"
-	}).when("/login/", {
-		templateUrl: "templates/login.html",
 		controller: "EvaluationController"
 	}).otherwise({ redirectTo: "/"});
 });
@@ -99,6 +99,7 @@ app.factory("LoginFactory", [
 
 				$http.post("http://dispatch.ru.is/h22/api/v1/login", { user: name, pass: password })
 				.success(function(data, status, headers) {
+					console.log(data);
 					username = name;
 					token = data.token;
 					role = data.role;
@@ -121,6 +122,83 @@ app.factory("LoginFactory", [
 		};
 	}
 ]);
+/*var EvaluationControllers = angular.module("EvaluationControllers", []);
+
+EvaluationControllers.controller("LoginController", [
+	"$scope", "LoginFactory",
+	function($scope, LoginFactory){
+		$scope.user = {};
+
+		//console.log(LoginFactory.getUsername());
+		$scope.login = function(){
+			//console.log($scope.user.username);
+
+			console.log("hello kitty");
+			LoginFactory.login($scope.user.username, $scope.user.password).then(function(data){
+				console.log("Meow");
+				$scope.info = data;
+				console.log(data);
+			});
+		};
+
+		$scope.test = "test";
+	}
+]);
+
+EvaluationControllers.controller("HomeController", [
+	"$scope", "ApiFactory",
+	function($scope, ApiFactory) {
+		
+		ApiFactory.getAllEvaluations().then(function(data) {
+			$scope.evaluations = data;
+		}, function(errorMessage) {
+		}, function(updateMessage) {
+		});
+
+
+		$scope.test = "test";
+	}
+]);
+
+EvaluationControllers.controller("EvaluationController", [
+	"$scope", "ApiFactory", "$routeParams",
+	function($scope, ApiFactory, $routeParams) {
+		var evaluationID = $routeParams.evaluationID;
+
+		if(evaluationID !== undefined) {
+			ApiFactory.getEvaluationById(evaluationID).then(function(data) {
+				$scope.evaluation = data;
+			}, function(errorMessage) {
+				console.log("Error fetching evaluation: " + errorMessage);
+			});
+		}
+		else {
+			$scope.evaluation = {
+				TitleIS: "",
+				TitleEN: "",
+				IntroTextIS: "",
+				IntroTextEN: "",
+				CourseQuestions: [],
+				TeacherQuestions: []
+			};
+		}
+
+		$scope.addAnswer = function(question) {
+			question.Answers.push("New answer");
+		};
+
+		$scope.addCourseQuestion = function() {
+			$scope.evaluation.CourseQuestions.push({
+				ID: $scope.evaluation.CourseQuestions.length,
+				TextIS: "",
+				TextEN: "",
+				ImageURL: "",
+				Type: "single",
+				Answers: []
+			});
+		};
+	}
+]);*/
 app.controller("EvaluationController", [
 	"$scope", "ApiFactory", "$routeParams",
 	function($scope, ApiFactory, $routeParams) {
@@ -170,6 +248,26 @@ app.controller("HomeController", [
 		}, function(updateMessage) {
 		});
 
+
+		$scope.test = "test";
+	}
+]);
+app.controller("LoginController", [
+	"$scope", "LoginFactory",
+	function($scope, LoginFactory){
+		$scope.user = {};
+
+		//console.log(LoginFactory.getUsername());
+		$scope.login = function(){
+			//console.log($scope.user.username);
+
+			console.log("hello kitty");
+			LoginFactory.login($scope.user.username, $scope.user.password).then(function(data){
+				console.log("Meow");
+				$scope.info = data;
+				console.log(data);
+			});
+		};
 
 		$scope.test = "test";
 	}

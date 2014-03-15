@@ -1,4 +1,4 @@
-var EvaluationControllers = angular.module("EvaluationControllers", []);
+/*var EvaluationControllers = angular.module("EvaluationControllers", []);
 
 EvaluationControllers.controller("LoginController", [
 	"$scope", "LoginFactory",
@@ -16,6 +16,8 @@ EvaluationControllers.controller("LoginController", [
 				console.log(data);
 			});
 		};
+
+		$scope.test = "test";
 	}
 ]);
 
@@ -72,4 +74,4 @@ EvaluationControllers.controller("EvaluationController", [
 			});
 		};
 	}
-]);
+]);*/

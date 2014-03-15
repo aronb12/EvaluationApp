@@ -1,4 +1,4 @@
-EvaluationControllers.controller("EvaluationController", [
+app.controller("EvaluationController", [
 	"$scope", "ApiFactory", "$routeParams",
 	function($scope, ApiFactory, $routeParams) {
 		var evaluationID = $routeParams.evaluationID;
