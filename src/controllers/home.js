@@ -1,4 +1,4 @@
-app.controller("HomeController", [
+EvaluationControllers.controller("HomeController", [
 	"$scope", "ApiFactory",
 	function($scope, ApiFactory) {
 		
