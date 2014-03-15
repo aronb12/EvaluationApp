@@ -7,7 +7,7 @@ describe("LoginFactory tests", function() {
         $httpBackend = $injector.get('$httpBackend');
 
         // Intercept HTTP requests and do the following:
-        $httpBackend.when('POST', 'http://localhost:19358/doc/Api/POST-api-v1-login').respond({role: "student", token: "xxx"});
+        $httpBackend.when('POST', 'http://dispatch.ru.is/h22/api/v1/login').respond({role: "student", token: "xxx"});
 
         // Create a fresh instance of the LoginFactory:
         loginFactory = $injector.get("LoginFactory");
@@ -24,7 +24,7 @@ describe("LoginFactory tests", function() {
             expect(loginFactory.getRole()).toBe(data.role);
             expect(data.role).toBe("student");
         });
-        $httpBackend.expectPOST('http://localhost:19358/doc/Api/POST-api-v1-login');
+        $httpBackend.expectPOST('http://dispatch.ru.is/h22/api/v1/login');
         $httpBackend.flush();
     })
 })

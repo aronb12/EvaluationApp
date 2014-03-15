@@ -97,7 +97,7 @@ app.factory("LoginFactory", [
 			login: function(name, password) {
 				var deferred = $q.defer();
 
-				$http.post("http://localhost:19358/doc/Api/POST-api-v1-login", { user: name, pass: password })
+				$http.post("http://dispatch.ru.is/h22/api/v1/login", { user: name, pass: password })
 				.success(function(data, status, headers) {
 					username = name;
 					token = data.token;
