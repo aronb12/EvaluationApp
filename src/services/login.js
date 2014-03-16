@@ -1,7 +1,10 @@
 app.factory("LoginFactory", [
 	"$http", "$q",
 	function($http, $q) {
-		var username, role, token;
+		var username = "";
+		var role = "";
+		var token = "";
+		var status = "";
 		return {
 			login: function(name, password) {
 				var deferred = $q.defer();
@@ -11,10 +14,10 @@ app.factory("LoginFactory", [
 					console.log(data);
 					username = name;
 					token = data.token;
-					role = data.role;
-					deferred.resolve({ username: name, role: data.role, token: data.token });
+					role = data.User.Role;
+					deferred.resolve({ username: name, role: data.User.Role, token: data.token });
 				}).error(function() {
-					deferred.reject();
+					deferred.reject(status);
 				});
 
 				return deferred.promise;

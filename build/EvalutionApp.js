@@ -92,7 +92,10 @@ function generateEvaluations() {
 app.factory("LoginFactory", [
 	"$http", "$q",
 	function($http, $q) {
-		var username, role, token;
+		var username = "";
+		var role = "";
+		var token = "";
+		var status = "";
 		return {
 			login: function(name, password) {
 				var deferred = $q.defer();
@@ -102,10 +105,10 @@ app.factory("LoginFactory", [
 					console.log(data);
 					username = name;
 					token = data.token;
-					role = data.role;
-					deferred.resolve({ username: name, role: data.role, token: data.token });
+					role = data.User.Role;
+					deferred.resolve({ username: name, role: data.User.Role, token: data.token });
 				}).error(function() {
-					deferred.reject();
+					deferred.reject(status);
 				});
 
 				return deferred.promise;
@@ -257,16 +260,13 @@ app.controller("LoginController", [
 	function($scope, LoginFactory){
 		$scope.user = {};
 
-		//console.log(LoginFactory.getUsername());
 		$scope.login = function(){
-			//console.log($scope.user.username);
 
-			console.log("hello kitty");
 			LoginFactory.login($scope.user.username, $scope.user.password).then(function(data){
-				console.log("Meow");
 				$scope.info = data;
 				console.log(data);
 			});
+
 		};
 
 		$scope.test = "test";
