@@ -29,10 +29,17 @@ module.exports = function(config) {
       
     ],
 
+    //preprocessor configures which files should be tested for coverage.
+    preprocessors: {
+    'src/*.js': 'coverage',
+    'src/services/*.js': 'coverage',
+    'src/controllers/*.js': 'coverage'
+    },
+
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
 
     // web server port
