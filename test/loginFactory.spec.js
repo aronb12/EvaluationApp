@@ -1,4 +1,4 @@
-describe("LoginFactory tests", function() {
+describe("LoginFactory tests student", function() {
     var $httpBackend;
     var loginFactory;
 
@@ -15,14 +15,14 @@ describe("LoginFactory tests", function() {
 
     it("is possible to login as 'einarke12' and get a token with 'xxx'", function() {
         loginFactory.login("einarke12").then(function(data) {
-            expect(loginFactory.getUsername()).toBe(data.username);
-            expect(data.username).toBe("einarke12");
+            expect(loginFactory.getUsername()).toBe(data.Username);
+            expect(data.Username).toBe("einarke12");
 
-            expect(loginFactory.getToken()).toBe(data.token);
-            expect(data.token).toBe("xxx");
+            expect(loginFactory.getToken()).toBe(data.Token);
+            expect(data.Token).toBe("xxx");
 
-            expect(loginFactory.getRole()).toBe(data.role);
-            expect(data.role).toBe("student");
+            expect(loginFactory.getRole()).toBe(data.Role);
+            expect(data.Role).toBe("student");
         });
         $httpBackend.expectPOST('http://dispatch.ru.is/h22/api/v1/login');
         $httpBackend.flush();

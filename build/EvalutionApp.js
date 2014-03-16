@@ -104,9 +104,9 @@ app.factory("LoginFactory", [
 				.success(function(data, status, headers) {
 					console.log(data);
 					username = name;
-					token = data.token;
+					token = data.Token;
 					role = data.User.Role;
-					deferred.resolve({ username: name, role: data.User.Role, token: data.token });
+					deferred.resolve({ username: name, role: data.User.Role, token: data.Token });
 				}).error(function() {
 					deferred.reject(status);
 				});
