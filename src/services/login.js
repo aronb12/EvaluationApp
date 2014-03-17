@@ -18,6 +18,7 @@ app.factory("LoginFactory", [
 					user.fullName = data.User.FullName;
 					user.ssn = data.User.SSN;
 					user.role = data.User.Role;
+					$http.defaults.headers.common.Authorization = "Basic " + token;
 
 					var result = new Array(token, user);
 
@@ -51,7 +52,7 @@ app.factory("LoginFactory", [
 			},
 			getAuth: function(){
 				return $http.defaults.headers.common.Authorization;
-			}l
+			}
 		};
 	}
 ]);
