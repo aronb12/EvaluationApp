@@ -1,6 +1,6 @@
 describe("LoginFactory tests student", function() {
-    var $httpBackend;
-    var loginFactory;
+    var $httpBackend, 
+        loginFactory;
 
     beforeEach(module("EvaluationApp"));
     beforeEach(inject(function($injector) {
@@ -8,7 +8,7 @@ describe("LoginFactory tests student", function() {
         $httpBackend = $injector.get('$httpBackend');
 
         // Intercept HTTP requests and do the following:
-        $httpBackend.when('POST', 'http://dispatch.ru.is/h22/api/v1/login').respond({role: "student", token: "xxx"});
+        $httpBackend.when('POST', 'http://dispatch.ru.is/h22/api/v1/login').respond({user:"einarke12", role: "student", token: "xxx"});
         
 
         // Create a fresh instance of the LoginFactory:
