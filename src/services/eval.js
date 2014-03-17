@@ -5,6 +5,7 @@ app.factory('EvalFactory', [
 		//var evaluations = new Array();
 
 		return {
+			//The following use api/v1/evaluationtemplates
 
 			getEvaluation: function(id){
 				//GET api/v1/evaluationtemplates/{id}
@@ -58,9 +59,10 @@ app.factory('EvalFactory', [
 				return deferred.promise;
 
 			},
+			//The following use api/v1/evaluation
 			activateEvaluation: function(id){
 				//calls /api/vi/evaluations - POST
-				
+
 
 			}
 		};

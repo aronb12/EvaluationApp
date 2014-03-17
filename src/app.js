@@ -16,8 +16,8 @@ app.config(['$routeProvider',
 					}
 				}
 			}
-		}).when("/admin", {
-			templateUrl: "templates/admin.html",
+		}).when("/admin/create_evaluation", {
+			templateUrl: "templates/create_evaluation.html",
 			controller: "AdminController",
 			resolve: {
 				this: function($location, LoginFactory){
