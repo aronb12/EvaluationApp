@@ -1,9 +1,7 @@
 app.factory("LoginFactory", [
 	"$http", "$q",
 	function($http, $q) {
-		/*var username = "";
-		var role = "";
-		var status = "";*/
+
 		var token;
 		var user = {};
 		return {
@@ -13,7 +11,6 @@ app.factory("LoginFactory", [
 
 				$http.post("http://dispatch.ru.is/h22/api/v1/login", { user: name, pass: password })
 				.success(function(data, status, headers){
-					//console.log(data);
 					token = data.Token;
 
 					user.username = data.User.Username;
@@ -23,18 +20,8 @@ app.factory("LoginFactory", [
 					user.role = data.User.Role;
 
 					var result = new Array(token, user);
-					//console.log(result);
 
 					deferred.resolve(result);
-				/*});
-
-				.success(function(data, status, headers) {
-					console.log(data);
-					username = name;
-					token = data.Token;
-					role = data.User.Role;
-					deferred.resolve({ username: name, role: data.User.Role, token: data.token });*/
-
 				}).error(function() {
 					deferred.reject(status);
 				});
@@ -61,7 +48,10 @@ app.factory("LoginFactory", [
 			},
 			getUser: function(){
 				return user;
-			}
+			},
+			getAuth: function(){
+				return $http.defaults.headers.common.Authorization;
+			}l
 		};
 	}
 ]);
