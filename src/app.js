@@ -26,6 +26,16 @@ app.config(['$routeProvider',
 					}
 				}
 			}
+		}).when("/admin/active_evaluation", {
+			templateUrl: "templates/active_evaluation.html",
+			controller: "AdminController",
+			resolve: {
+				this: function($location, LoginFactory){
+					if(LoginFactory.getRole() !== 'admin'){
+						$location.path('/');
+					}
+				}
+			}		
 		}).when("/home", {
 			templateUrl: "templates/home.html",
 			controller: "HomeController"
