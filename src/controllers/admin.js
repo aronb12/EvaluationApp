@@ -4,6 +4,35 @@ app.controller("AdminController", [
 		$scope.token = LoginFactory.getToken();
 		$scope.user = LoginFactory.getUser();
 
+		$scope.evaluation = {
+				TitleIS: $scope.TitleIS,
+				TitleEN: $scope.TitleEN,
+				IntroTextIS: $scope.IntroTextIS,
+				IntroTextEN: $scope.IntroTextEN,
+				CourseQuestions: [],
+				TeacherQuestions: []
+		};
+
+		$scope.createEvaluation = function(){
+			console.log($scope.evaluation);
+		};
+
+		$scope.addCourseQuestion = function() {
+			$scope.evaluation.CourseQuestions.push({
+				ID: $scope.evaluation.CourseQuestions.length,
+				TextIS: $scope.TextIS,
+				TextEN: $scope.TextEN,
+				ImageURL: $scope.ImageURL,
+				Type: $scope.Type,
+				Answers: []
+			});
+		};
+
+		$scope.addAnswer = function(question) {
+			Answer.push($scope.Answer);
+		};
+
+
 		$scope.create = function(){
 			$location.path('admin/create_evaluation');
 		};
@@ -16,6 +45,7 @@ app.controller("AdminController", [
 			$location.path('admin');
 		};
 
+/*
 		$scope.questions = [];
 		$scope.newTitle= "";
 
@@ -28,24 +58,24 @@ app.controller("AdminController", [
 		$scope.remove = function(){
 			var removed = $scope.questions.pop();
 		};
+*/
 
-		//practically everything below this line is test data
-		$scope.testTitle = "";
+		//GET Activated Evaluations
+		if(LoginFactory.getUser().role === 'admin'){
 
-		var test = 'test';
-
-
-		//STUDENT
-		if(LoginFactory.getUser().role === 'student'){
-			EvalFactory.getStudentEvaluations()
-			.then(function(data){
+			EvalFactory.getActivatedEvaluations()
+			.then(function(data, status, headers){
+				$scope.evaluations = data;
 				console.log(data);
 			})
 			.catch(function(){
 				console.log('Error');
 			});
 		}
+		//practically everything below this line is test data
+		$scope.testTitle = "";
 
+		var test = 'test';
 
 		//ADMIN
 		if(LoginFactory.getUser().role === 'admin'){
@@ -61,6 +91,7 @@ app.controller("AdminController", [
 
 			EvalFactory.createEvaluation('Titill', 'Title', 'Inngangur', 'Intro', questions, questions);*/
 			
+
 			/*var startDate = new Date(2014, 2, 18, 0, 0, 0, 0);
 
 			var endDate = new Date(2014, 2, 18, 17, 0, 0, 0);
@@ -78,9 +109,10 @@ app.controller("AdminController", [
 			})
 			.catch(function(errorMessage){
 				console.log(errorMessage);
-			});*/
 
-			/*EvalFactory.getEvaluations()
+			})
+
+			EvalFactory.getEvaluations()
 			.then(function(data){
 				$scope.testTitle = data.title;
 				console.log(data);

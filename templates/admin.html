@@ -1,29 +1,15 @@
-<h2 ng-bind="'Welcome: ' + user.fullName"></h2>
+<h2 ng-bind="'Welcome: ' + user.fullName" class = "page-header"></h2>
 <div class="row">
   <div class="col-md-2">
   	<ul class="nav nav-pills nav-stacked">
-	  <li class="active"><a href="#/admin">Active</a></li>
+	  <li class="active"><a ng-click="available()">Available</a></li>
 	  <li><a ng-click="create()">Create</a></li>
-	  <li><a href="#/admin">Available</a></li>
+	  <li><a ng-click="active()">Activated</a></li>
 	</ul>
   </div>
-  <div class="col-md-9" role="main">
 
-  	<div class="col-md-2">
-  		<ul class="nav nav-pills nav-stacked">
-			<li><a ng-click="add()">Add</a><a ng-click="remove()">Remove</a></li>
-		    <li><input type="text" class="form-control" id="text" placeholder="New Title" ng-model="newTitle"></li>
-		</ul>
-  	</div>
-	<ul>
-		<li ng-repeat="question in questions">{{question.theTitle}}</li>
-	</ul>
-
-	<ul>
-		<li ng-repeat="evaluation in evaluations">
-			<a ng-href="#/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>
-		</li>
-	</ul>
+  <div class="well col-md-9" role="main">
+  	<h4 class="page-header"> Available Evaluations </h4>
   </div>
 
 </div>

@@ -9,7 +9,7 @@ app.config(['$routeProvider',
 			controller: "LoginController"
 		}).when("/student", {
 			templateUrl: "templates/student.html",
-			controller: "AdminController",
+			controller: "StudentController",
 			resolve: {
 				this: function($location, LoginFactory){
 					if(LoginFactory.getRole() !== 'student'){
