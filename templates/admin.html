@@ -8,6 +8,17 @@
 	</ul>
   </div>
   <div class="col-md-9" role="main">
+
+  	<div class="col-md-2">
+  		<ul class="nav nav-pills nav-stacked">
+			<li><a ng-click="add()">Add</a><a ng-click="remove()">Remove</a></li>
+		    <li><input type="text" class="form-control" id="text" placeholder="New Title" ng-model="newTitle"></li>
+		</ul>
+  	</div>
+	<ul>
+		<li ng-repeat="question in questions">{{question.theTitle}}</li>
+	</ul>
+
 	<ul>
 		<li ng-repeat="evaluation in evaluations">
 			<a ng-href="#/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>

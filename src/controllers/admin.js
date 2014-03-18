@@ -16,15 +16,29 @@ app.controller("AdminController", [
 			$location.path('admin');
 		};
 
+		$scope.questions = [];
+		$scope.newTitle= "";
+
+		$scope.add = function(){
+			if($scope.newTitle !== ""){
+				$scope.questions.push({theTitle: $scope.newTitle});
+			}
+		};
+
+		$scope.remove = function(){
+			var removed = $scope.questions.pop();
+		};
 
 		//practically everything below this line is test data
 		$scope.testTitle = "";
 
 		var test = 'test';
 
+
+		//STUDENT
 		if(LoginFactory.getUser().role === 'student'){
 			EvalFactory.getStudentEvaluations()
-			.then(function(data, status, headers){
+			.then(function(data){
 				console.log(data);
 			})
 			.catch(function(){
@@ -32,6 +46,8 @@ app.controller("AdminController", [
 			});
 		}
 
+
+		//ADMIN
 		if(LoginFactory.getUser().role === 'admin'){
 			/*
 			answers = [
@@ -45,7 +61,7 @@ app.controller("AdminController", [
 
 			EvalFactory.createEvaluation('Titill', 'Title', 'Inngangur', 'Intro', questions, questions);*/
 			
-			/**/var startDate = new Date(2014, 2, 18, 0, 0, 0, 0);
+			/*var startDate = new Date(2014, 2, 18, 0, 0, 0, 0);
 
 			var endDate = new Date(2014, 2, 18, 17, 0, 0, 0);
 
@@ -62,7 +78,7 @@ app.controller("AdminController", [
 			})
 			.catch(function(errorMessage){
 				console.log(errorMessage);
-			});
+			});*/
 
 			/*EvalFactory.getEvaluations()
 			.then(function(data){
