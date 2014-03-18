@@ -1,8 +1,9 @@
-app.controller("EvaluationController", [
+/*app.controller("EvaluationController", [
 	"$scope", "ApiFactory", "$routeParams",
 	function($scope, ApiFactory, $routeParams) {
 		var evaluationID = $routeParams.evaluationID;
 
+		$http.defaults.headers.common.Authorization = "Basic " + LoginFactory.getToken();
 		if(evaluationID !== undefined) {
 			ApiFactory.getEvaluationById(evaluationID).then(function(data) {
 				$scope.evaluation = data;
@@ -36,4 +37,4 @@ app.controller("EvaluationController", [
 			});
 		};
 	}
-]);
+]);*/

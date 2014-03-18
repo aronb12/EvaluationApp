@@ -5,17 +5,17 @@
 	  	<ul class="nav nav-pills nav-stacked">
 		  <li><a ng-click="available()">Available</a></li>
 		  <li ><a ng-click="create()">Create</a></li>
-		  <li class="active"><a ng-click="active()">Active</a></li>
+		  <li class="active"><a ng-click="active()">Activated</a></li>
 		</ul>
 	</div>
 <!-- ============================= -->
 
   <div class="well col-md-9" role="main">
-  	<h4 class="page-header"> Active Evaluations </h4>
-  	<ul>
-		<li ng-repeat="evaluation in evaluations">
-			<a ng-href="#/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>
-		</li>
-	</ul>
+  	<h4 class="page-header"> Activated Evaluations </h4>
+    <ul>
+      <li ng-repeat="evaluation in evaluations">
+        <a>{{ evaluation.TemplateTitleIS }}</a>
+      </li>
+    </ul>
   </div>
 </div>
