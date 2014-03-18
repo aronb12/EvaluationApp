@@ -5,10 +5,10 @@ app.controller("AdminController", [
 		$scope.user = LoginFactory.getUser();
 
 		$scope.evaluation = {
-				TitleIS: $scope.TitleIS,
-				TitleEN: $scope.TitleEN,
-				IntroTextIS: $scope.IntroTextIS,
-				IntroTextEN: $scope.IntroTextEN,
+				TitleIS: "",
+				TitleEN: "",
+				IntroTextIS: "",
+				IntroTextEN: "",
 				CourseQuestions: [],
 				TeacherQuestions: []
 		};
@@ -45,6 +45,21 @@ app.controller("AdminController", [
 			$location.path('admin');
 		};
 
+		//GET Activated Evaluations
+		/*if(LoginFactory.getUser().role === 'admin'){
+
+			EvalFactory.getActivatedEvaluations()
+			.then(function(data, status, headers){
+				$scope.evaluations = data;
+				console.log(data);
+			})
+			.catch(function(){
+				console.log('Error');
+			});
+		}*/
+		//practically everything below this line is test data
+		$scope.testTitle = "";
+
 /*
 		$scope.questions = [];
 		$scope.newTitle= "";
@@ -59,21 +74,6 @@ app.controller("AdminController", [
 			var removed = $scope.questions.pop();
 		};
 */
-
-		//GET Activated Evaluations
-		if(LoginFactory.getUser().role === 'admin'){
-
-			EvalFactory.getActivatedEvaluations()
-			.then(function(data, status, headers){
-				$scope.evaluations = data;
-				console.log(data);
-			})
-			.catch(function(){
-				console.log('Error');
-			});
-		}
-		//practically everything below this line is test data
-		$scope.testTitle = "";
 
 		var test = 'test';
 
