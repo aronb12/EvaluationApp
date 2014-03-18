@@ -1,18 +1,111 @@
-<h2 ng-bind="'Welcome: ' + user.fullName"></h2>
+<h2 ng-bind="'Welcome: ' + user.fullName" class = "page-header"></h2>
+<!-- ======== MENU BAR ==============-->
 <div class="row">
   <div class="col-md-2">
   	<ul class="nav nav-pills nav-stacked">
-	  <li><a href="#/admin">Active</a></li>
+	  <li><a ng-click="available()">Available</a></li>
 	  <li class="active"><a ng-click="create()">Create</a></li>
-	  <li><a href="#/admin">Available</a></li>
+	  <li><a ng-click="active()">Active</a></li>
 	</ul>
   </div>
-  <div class="col-md-9" role="main">
-	<ul>
-		<li ng-repeat="evaluation in evaluations">
-			<a ng-href="#/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>
-		</li>
-	</ul>
-  </div>
+<!-- ============================= -->
 
+  <div class="well col-md-9" role="main">
+  	<form class="form-horizontal" role="form">
+
+      <!-- ======== Evaluation info ========= -->
+  		<h4 class="page-header">Evaluation info</h4>
+  		<div class="form-group">
+    		<label class="col-sm-2 control-label">Title IS</label>
+    		<div class="col-sm-10">
+      			<input type="text" class="form-control" id="">
+    		</div>
+    		<label class="col-sm-2 control-label">Title EN</label>
+    		<div class="col-sm-10">
+      			<input type="text" class="form-control" id="">
+    		</div>
+    		<label class="col-sm-2 control-label">Intro Text IS</label>
+    		<div class="col-sm-10">
+      			<input type="text" class="form-control" id="">
+    		</div>
+    		<label class="col-sm-2 control-label">Intro Text EN</label>
+    		<div class="col-sm-10">
+      			<input type="text" class="form-control" id="">
+    		</div>
+  		</div>
+
+  		<!-- =========QUESTIONS============-->
+
+  		<h4 class="page-header">Course questions</h4>
+      <div "fix later">
+        <p>{{ evaluation.ID }}</p>
+    		<div class="form-group">
+      		<label class="col-sm-2 control-label">Text IS</label>
+      		<div class="col-sm-10">
+        			<input type="text" class="form-control" id="">
+      		</div>
+      		<label class="col-sm-2 control-label">Text EN</label>
+      		<div class="col-sm-10">
+        			<input type="text" class="form-control" id="">
+      		</div>
+      		<label class="col-sm-2 control-label">ImageUrl</label>
+      		<div class="col-sm-10">
+        			<input type="text" class="form-control" id="">
+      		</div>
+      		<label class="col-sm-2 control-label">Type</label>
+      		<div class="col-sm-10">
+      			<div class="btn-group">
+     					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+  	      				Type
+  	      				<span class="caret"></span>
+      				</button>
+     				 	<ul class="dropdown-menu">
+  				      <li><a href="#">Type 1</a></li>
+  				      <li><a href="#">Type 2</a></li>
+  				    </ul>
+  				</div>
+      		</div>
+    		</div>
+
+  		<!-- ==========Answers================ -->
+
+    		<h4 class="page-header">Answers</h4>
+        <div "Fix later ng- repeat sumthing">
+          <p>Answer nr: bla</p>
+      		<div class="form-group pull">
+        		<label class="col-sm-2 control-label">Text IS</label>
+        		<div class="col-sm-10">
+          			<input type="text" class="form-control" id="">
+        		</div>
+        		<label class="col-sm-2 control-label">Text EN</label>
+        		<div class="col-sm-10">
+          			<input type="text" class="form-control" id="">
+        		</div>
+        		<label class="col-sm-2 control-label">ImageUrl</label>
+        		<div class="col-sm-10">
+          			<input type="text" class="form-control" id="">
+        		</div>
+        		<label class="col-sm-2 control-label">Weight</label>
+        		<div class="col-sm-4">
+    				<select multiple class="form-control">
+    				  <option>Lélegt</option>
+    				  <option>Allt í lagi</option>
+    				  <option>Hlutlaust</option>
+    				  <option>Ágætt</option>
+    				  <option>Gott</option>
+    				</select>
+      			</div>
+      		</div>
+        </div>
+    		<p class="pull-right">
+    			<button type="button"  class="btn btn-primary">Add answer</button>
+    		</p>
+      </div>
+      <!-- ================================-->
+
+  		<p>
+  			<button type="button"  class="btn btn-primary">Add Question</button>
+  		</p>
+	</form>
+  </div>
 </div>
