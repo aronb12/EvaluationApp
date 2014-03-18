@@ -2,15 +2,15 @@ app.controller("LoginController", [
 	"$scope", "$http", "$location", "LoginFactory",
 	function($scope, $http, $location, LoginFactory){
 		//$scope.user = {};
-		var token;
-		var user = {};
+		//$scope.token = "";
+		$scope.user = {};
 
 		$scope.login = function(){
 
 			//$http.defaults.headers.common.Authorization = "Basic " + LoginFactory.getToken();
 			LoginFactory.login($scope.user.username, $scope.user.password).then(function(data){
-				token = data[0];
-				user = data[1];
+				//$scope.token = data[0];
+				//$scope.user = data[1];
 				if(data[1].role === 'admin'){
 					$location.path('/admin');
 				}

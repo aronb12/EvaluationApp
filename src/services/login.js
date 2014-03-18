@@ -50,8 +50,11 @@ app.factory("LoginFactory", [
 			getUser: function(){
 				return user;
 			},
+			setAuth: function(){
+				$http.defaults.headers.common.Authorization = 'Basic ' +  this.getToken();
+			},
 			getAuth: function(){
-				return $http.defaults.headers.common.Authorization;
+				return 'Basic ' + this.getToken();
 			}
 		};
 	}
