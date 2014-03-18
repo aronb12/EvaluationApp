@@ -8,6 +8,15 @@ app.controller("AdminController", [
 			$location.path('admin/create_evaluation');
 		};
 
+		$scope.active = function(){
+			$location.path('admin/active_evaluation');
+		};
+
+		$scope.available = function(){
+			$location.path('admin');
+		};
+
+
 		//practically everything below this line is test data
 		$scope.testTitle = "";
 
